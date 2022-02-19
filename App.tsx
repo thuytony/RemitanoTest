@@ -1,19 +1,27 @@
 import React from 'react';
-import { StatusBar } from 'expo-status-bar';
-import { SafeAreaView, StyleSheet } from 'react-native';
+import {
+  SafeAreaView,
+  StatusBar,
+  StyleSheet,
+  useColorScheme,
+} from 'react-native';
 import { HomeScreen } from '@screens';
 
-export default function App() {
+const App: React.FC = () => {
+  const isDarkMode = useColorScheme() === 'dark';
+
   return (
-    <SafeAreaView style={styles.container}>
-      <StatusBar style="auto" />
+    <SafeAreaView style={ styles.container }>
+      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       <HomeScreen />
     </SafeAreaView>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
 });
+
+export default App;
